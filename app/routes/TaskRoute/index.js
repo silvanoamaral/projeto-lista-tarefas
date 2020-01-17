@@ -22,8 +22,8 @@ TaskRoute.route('/').get(async (req, res, next) => {
 })
 
 // Delete only one task
-TaskRoute.route('/delete/:id').get(async (req, res, next) => {
-  const _id = req.params.id ? req.params.id : ''
+TaskRoute.route('/delete/').get(async (req, res, next) => {
+  const _id = req.query.id ? req.query.id : ''
 
   await axios.delete(`https://5e0e83b236b80000143dbd0e.mockapi.io/api/todo/${_id}`, {
     headers: {
@@ -67,7 +67,6 @@ TaskRoute.route('/update/').get(async (req, res, next) => {
 // Include only one task
 TaskRoute.route('/register/').get(async (req, res, next) => {
   const params = req.query
-  console.log(typeof params.completed)
 
   await axios.post(`https://5e0e83b236b80000143dbd0e.mockapi.io/api/todo/`, params, {
     headers: {

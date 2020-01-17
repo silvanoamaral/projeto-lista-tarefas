@@ -60,3 +60,26 @@ export const updateTask = params => {
     })
   }
 }
+
+export const removeTask = id => {
+  return dispatch => {
+    dispatch({ type: 'FETCH_TASK_PENDING' })
+
+    axios.get(`/api/tasks/delete`, { params: {id}  }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      console.log(response)
+      if(response.statusText === 'OK') {
+        dispatch({ type: 'FETCH_TASK_SUCCESS' })
+        dispatch(getTask())
+      }
+    })
+    .catch((error) => {
+      dispatch({ type: 'FETCH_TASK_ERROR', payload: error.message })
+    })
+  }
+}

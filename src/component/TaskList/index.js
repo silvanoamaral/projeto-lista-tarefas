@@ -1,12 +1,17 @@
 import React from 'react'
 import Task from '../Task'
 
-const TaskList = ({ todos, toggleTodo }) => (
+const TaskList = ({ todos, toggleTodo, onDelete }) => (
   <>
     {todos && <p>Total: {todos.length}</p>}
     <ul>
       {todos && todos.map(todo => (
-        <Task key={todo.id || 0} { ...todo } onClick={() => toggleTodo(todo.id, !JSON.parse(todo.completed))} />
+        <Task
+          key={todo.id}
+          { ...todo }
+          onDelete={() => onDelete(todo.id)}
+          onClick={() => toggleTodo(todo.id, !JSON.parse(todo.completed))}
+        />
       ))}
     </ul>
   </>

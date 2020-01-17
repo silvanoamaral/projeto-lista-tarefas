@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import TaskList from '../../component/TaskList'
 import { VisibilityFilters } from '../../redux/actions'
-import { updateTask } from '../../services'
+import { updateTask, removeTask } from '../../services'
 
 const getVisibleTask = (todos, filter) => {
   switch (filter) {
@@ -21,6 +21,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+  onDelete: id => dispatch(removeTask(id)),
   toggleTodo: (id, completed) => dispatch(updateTask({id, completed}))
 })
 
