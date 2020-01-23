@@ -1,6 +1,10 @@
 import React from 'react'
 
+import EditIcon from '../../component/iconMonstr/EditIcon'
+import TrashIcon from '../../component/iconMonstr/TrashIcon'
+
 const Task = ({
+  onEdit,
   onDelete,
   onClick,
   id,
@@ -27,7 +31,8 @@ const Task = ({
     <p>Tempo para lembrete da tarefa: {timeReminderTask}</p>
     
   </li>
-  <p onClick={ onDelete }>Delete</p>
+  <p onClick={ onDelete }><TrashIcon /></p>
+  <p onClick={ onEdit }><EditIcon /></p>
   </>
 )
 

@@ -5,7 +5,7 @@ export const todos = (state = [], action) => {
         ...action
       }
     case 'TOGGLE_TODO':
-      console.log('Reducers > TOGGLE_TODO', state, action)
+      //console.log('Reducers > TOGGLE_TODO', state, action)
       /* return state.map(todo =>
         (todo.id === action.id) 
           ? {...todo, completed: !todo.completed}

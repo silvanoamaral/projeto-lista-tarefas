@@ -2,7 +2,7 @@ const express = require('express')
 const axios = require('axios')
 const TaskRoute = express.Router()
 
-// All task and only one task
+//Getting every or only one task
 TaskRoute.route('/').get(async (req, res, next) => {
   const _id = req.query.id ? req.query.id : ''
 
@@ -15,8 +15,8 @@ TaskRoute.route('/').get(async (req, res, next) => {
     const data = response.data
     return res.status(200).send({ data })
   })
-  .catch((error) => {
-    return res.status(401).send({ error })
+  .catch(() => {
+    return res.status(401).send({ error: 'Erro ao buscar as tarefas. Tente novamente.' })
   })
   next()
 })
@@ -41,7 +41,8 @@ TaskRoute.route('/delete/').get(async (req, res, next) => {
   next()
 })
 
-TaskRoute.route('/update/').get(async (req, res, next) => {
+//Update only the propiedad completed
+TaskRoute.route('/completed/').get(async (req, res, next) => {
   const _id = req.query.id ? req.query.id : ''
   const params = {
     completed: req.query.completed ? req.query.completed : false
@@ -63,7 +64,6 @@ TaskRoute.route('/update/').get(async (req, res, next) => {
   next()
 })
 
-
 // Include only one task
 TaskRoute.route('/register/').get(async (req, res, next) => {
   const params = req.query
@@ -79,8 +79,28 @@ TaskRoute.route('/register/').get(async (req, res, next) => {
       return res.status(200).send({ mensagem: 'Tarefa cadastrada com sucesso.' })
     }
   })
-  .catch((error) => {
-    console.log(error)
+  .catch(() => {
+    return res.status(401).send({ error: 'Erro ao cadastrada a tarefa. Tente novamente.' })
+  })
+  next()
+})
+
+//
+TaskRoute.route('/update/').get(async (req, res, next) => {
+  const _id = req.query.id ? req.query.id : ''  
+
+  await axios.put(`https://5e0e83b236b80000143dbd0e.mockapi.io/api/todo/${_id}`, req.query, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  }).then(response => {
+    if(response.statusText === 'OK') {
+      return res.status(200).send({ mensagem: 'Tarefa atualizada com sucesso.' })
+    }
+  })
+  .catch(() => {
+    return res.status(401).send({ error: 'Erro ao atualizar a tarefa. Tente novamente.' })
   })
   next()
 })

@@ -5,6 +5,7 @@ import { getTask } from '../../services'
 import AddTask from '../AddTask'
 import VisibleTaskList from '../VisibleTaskList'
 import FilterTask from '../../component/FilterTask'
+import Lightbox from '../../component/Lightbox'
 
 class Template extends Component {
   componentDidMount() {
@@ -13,16 +14,18 @@ class Template extends Component {
   }
 
   render() {
-    const { taskReducer } = this.props
+    const { taskReducer, modalReducer } = this.props
     return <>
       <FilterTask />
+      {
+        modalReducer.toggleModal &&
+        <Lightbox  {...modalReducer} />
+      }
       <AddTask />
-      { taskReducer.fetching ?
-        <p>Aguarde...</p> :
-       
-        <VisibleTaskList />
-
-      }      
+      { taskReducer.fetching &&
+        <p>Aguarde...</p>
+      }
+      <VisibleTaskList />
     </>
   }
 }
