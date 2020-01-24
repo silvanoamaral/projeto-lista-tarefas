@@ -26,7 +26,7 @@ const Task = ({
     <p>ID: { id }</p>
     <p>Descrição:. {description}</p>
     <p>happingTask: {happingTask}</p>
-    <p>Data e hora da criação da tarefa {Date(timeCreationTask)}</p>
+    <p>Data e hora da criação da tarefa {timeCreationTask}</p>
     <p>durationTask: {durationTask}</p>
     <p>Tempo para lembrete da tarefa: {timeReminderTask}</p>
     

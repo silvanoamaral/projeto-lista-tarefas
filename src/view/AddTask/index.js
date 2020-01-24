@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { registerTask } from '../../services'
+import Form from '../../component/Form'
 
 class AddTodo extends Component {
   constructor(props) {
@@ -40,36 +41,20 @@ class AddTodo extends Component {
 
   render() {
     return <div>
-      <form className="form-inline" onSubmit={this.handleSubmit} >
-        <input
-          className="form-control col-md-10"
-          name="description"
-          value={ this.state.description }
-          placeholder="description"
-          onChange={ this.handleChange }
-        />
-        <input
-          name="durationTask"
-          value={ this.state.durationTask }
-          placeholder="Data e hora que a tarefa acontecerá"
-          onChange={ this.handleChange }
-        />
-        <input
-          name="timeReminderTask"
-          value={ this.state.timeReminderTask }
-          placeholder="Tempo para lembrete da tarefa"
-          onChange={ this.handleChange }
-        />
-        <input
-          name="happingTask"
-          value={ this.state.happingTask }
-          placeholder="Data e hora que a tarefa acontecerá"
-          onChange={ this.handleChange }
-        />
-        <button type="submit" className="btn btn-primary col-md-2">
-          Add
-        </button>
-      </form>
+      <Form
+        onSubmit={ this.handleSubmit }
+        handleChange={ this.handleChange }
+        handleCheckbox={ this.handleCheckbox }
+        description={ this.state.description }
+        durationTask={ this.state.durationTask }
+        timeReminderTask={ this.state.timeReminderTask }
+        happingTask={ this.state.happingTask }
+        completed={ this.state.completed }
+        isVisibleCheckbox={ false }
+        labelButton="Adicionar tarefa"
+      />
+
+      <button onClick={() => this.props.dispatch({ type: 'TOGGLE_MODAL_OPEN' }) }>Open Modal</button>
     </div>
   }
 }
