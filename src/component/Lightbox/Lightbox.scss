@@ -1,0 +1,18 @@
+.lightbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #000000ad;
+  height: 100%;
+
+  .content {
+    background: #fff;
+    padding: 20px;
+    position: relative;
+  }
+
+  button {
+    padding: 0;
+    border: 0;
+  }
+}

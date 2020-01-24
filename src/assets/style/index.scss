@@ -1,3 +1,15 @@
 svg {
   cursor: pointer;
 }
+
+button {
+  border: 1px solid #000;
+  background: transparent;
+  cursor: pointer;
+  padding: 5px 20px;
+}
+
+button:disabled {
+  color: #0eb915;
+  border-color: #0eb915;
+}

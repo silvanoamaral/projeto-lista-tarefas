@@ -74,9 +74,8 @@ class EditTask extends Component {
 
   render() {
     return (
-      <div className="content">
-        <h3>Editar tarefa</h3>
-
+      <>
+        <h2>Editar tarefa</h2>
         <Form
           onSubmit={ this.handleSubmit }
           handleChange={ this.handleChange }
@@ -89,7 +88,7 @@ class EditTask extends Component {
           isVisibleCheckbox={ true }
           labelButton="Atualizar tarefa"
         />
-      </div>
+      </>
     )
   }
 }

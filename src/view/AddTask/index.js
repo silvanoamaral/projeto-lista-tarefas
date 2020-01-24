@@ -40,7 +40,8 @@ class AddTodo extends Component {
   }
 
   render() {
-    return <div>
+    return <>
+      <h2>Adicionar tarefa</h2>
       <Form
         onSubmit={ this.handleSubmit }
         handleChange={ this.handleChange }
@@ -53,9 +54,7 @@ class AddTodo extends Component {
         isVisibleCheckbox={ false }
         labelButton="Adicionar tarefa"
       />
-
-      <button onClick={() => this.props.dispatch({ type: 'TOGGLE_MODAL_OPEN' }) }>Open Modal</button>
-    </div>
+    </>
   }
 }
 

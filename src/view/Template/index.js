@@ -15,16 +15,29 @@ class Template extends Component {
   }
 
   render() {
-    const { taskReducer, modalReducer } = this.props
+    const { taskReducer, modalReducer, typeFormReducer } = this.props
 
     return <>
       <FilterTask />
+
+      <button
+        onClick={() => {
+          this.props.dispatch({ type: 'TOGGLE_MODAL_OPEN' })
+          this.props.dispatch({ type: 'TOGGLE_ADD' })
+        }
+        }>Cadastrar Tarefa
+      </button>
+
       {modalReducer.toggleModal &&
         <Lightbox>
-          <EditTask  {...modalReducer} />
+          {typeFormReducer.editTask &&
+            <EditTask  {...modalReducer} />
+          }
+          {typeFormReducer.addTask &&
+            <AddTask />
+          }
         </Lightbox>
       }
-      <AddTask />
       {taskReducer.fetching &&
         <p>Aguarde...</p>
       }

@@ -94,6 +94,7 @@ export const editTask = id => {
     .then(response => { 
       if(response.status === 200) {
         dispatch({ type: 'FETCH_TASK_SUCCESS' })
+        dispatch({ type: 'TOGGLE_EDIT' })
         dispatch({ type: 'TOGGLE_MODAL_OPEN', payload: {...response.data }})
       }
     })
