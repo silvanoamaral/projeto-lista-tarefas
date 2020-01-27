@@ -16,20 +16,29 @@ const Task = ({
   timeReminderTask
 }) => (
   <>
-  <li
-    onClick={onClick}
-    data-completed={completed}
-    style={{
-      textDecoration: JSON.parse(completed) ? 'line-through' : 'none'
-    }}
-  >
-    <p>ID: { id }</p>
-    <p>Descrição:. {description}</p>
-    <p>happingTask: {happingTask}</p>
-    <p>Data e hora da criação da tarefa {timeCreationTask}</p>
-    <p>durationTask: {durationTask}</p>
-    <p>Tempo para lembrete da tarefa: {timeReminderTask}</p>
-    
+  <li>
+    <div
+      className="task"
+      data-completed={completed}
+      style={{
+        textDecoration: JSON.parse(completed) ? 'line-through' : 'none'
+      }}
+    >
+      <p>ID: { id }</p>
+      <p>Descrição:. {description}</p>
+      <p>happingTask: {happingTask}</p>
+      <p>Data e hora da criação da tarefa {timeCreationTask}</p>
+      <p>durationTask: {durationTask}</p>
+      <p>Tempo para lembrete da tarefa: {timeReminderTask}</p>
+    </div>
+    <label className="checked">
+      <input
+        type="checkbox"
+        defaultChecked={JSON.parse(completed)}
+        onClick={onClick}
+      />
+      Tarefa concluída
+    </label>
   </li>
   <p onClick={ onDelete }><TrashIcon /></p>
   <p onClick={ onEdit }><EditIcon /></p>
