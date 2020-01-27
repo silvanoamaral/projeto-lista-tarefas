@@ -3,6 +3,11 @@ import React from 'react'
 import EditIcon from '../../component/iconMonstr/EditIcon'
 import TrashIcon from '../../component/iconMonstr/TrashIcon'
 
+const formatDate = date => {
+  const d = new Date(date)
+  return d.toString()
+}
+
 const Task = ({
   onEdit,
   onDelete,
@@ -26,7 +31,7 @@ const Task = ({
     >
       <p>ID: { id }</p>
       <p>Descrição:. {description}</p>
-      <p>happingTask: {happingTask}</p>
+      <p>happingTask: {formatDate(happingTask)}</p>
       <p>Data e hora da criação da tarefa {timeCreationTask}</p>
       <p>durationTask: {durationTask}</p>
       <p>Tempo para lembrete da tarefa: {timeReminderTask}</p>

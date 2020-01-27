@@ -1,4 +1,5 @@
 import React from 'react'
+import mask from '../../utils/mask'
 
 const Form = props => {
   return <>
@@ -12,9 +13,10 @@ const Form = props => {
       />
       <input
         name="durationTask"
-        value={ props.durationTask }
-        placeholder="Data e hora que a tarefa acontecerá"
+        value={ mask.dateMask(props.durationTask) }
+        placeholder="Duração da tarefa"
         onChange={ props.handleChange }
+        maxLength="10"
       />
       <input
         name="timeReminderTask"
@@ -24,9 +26,10 @@ const Form = props => {
       />
       <input
         name="happingTask"
-        value={ props.happingTask }
+        value={ mask.dateMask(props.happingTask) }
         placeholder="Data e hora que a tarefa acontecerá"
         onChange={ props.handleChange }
+        maxLength="10"
       />
       {props.isVisibleCheckbox &&
         <label>
