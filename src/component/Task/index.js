@@ -20,8 +20,7 @@ const Task = ({
   durationTask,
   timeReminderTask
 }) => (
-  <>
-  <li>
+  <li className="list__card">
     <div
       className="task"
       data-completed={completed}
@@ -43,11 +42,13 @@ const Task = ({
         onClick={onClick}
       />
       Tarefa concluída
+      <span class="checkmark"></span>
     </label>
+    <div className="list__card-btn">
+      <p onClick={ onDelete }><TrashIcon /></p>
+      <p onClick={ onEdit }><EditIcon /></p>
+    </div>
   </li>
-  <p onClick={ onDelete }><TrashIcon /></p>
-  <p onClick={ onEdit }><EditIcon /></p>
-  </>
 )
 
 export default Task

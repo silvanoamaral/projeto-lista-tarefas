@@ -4,7 +4,7 @@ import Task from '../Task'
 const TaskList = ({ todos, toggleTodo, onDelete, onEdit }) => (
   <>
     {todos && <p>Total: {todos.length}</p>}
-    <ul>
+    <ul className="list">
       {todos && todos.map(todo => (
         <Task
           key={todo.id}
